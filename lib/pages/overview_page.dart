@@ -1,4 +1,4 @@
-import 'package:charts_flutter/flutter.dart' as charts;
+import   'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ox_tech/pages/session_select.dart';
@@ -157,7 +157,7 @@ class _OverviewPageState extends State<OverviewPage> {
             child: InkWell(
               onTap: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => UserPage())),
-              child: Hero(
+              child  : Hero(
                 tag: 'profileAvatar',
                 child: ClipOval(
                     child: Image(
