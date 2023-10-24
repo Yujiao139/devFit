@@ -63,7 +63,7 @@ class _RecordFreestyleSessionState extends State<RecordFreestyleSession> {
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () async => Navigator.of(context).pop(),
               color: Colors.white),
           title: Text('Start your training',
@@ -98,7 +98,7 @@ class _RecordFreestyleSessionState extends State<RecordFreestyleSession> {
           SizedBox(height: 50),
           Text(
             '$hours:$minutes:$seconds',
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.black, fontSize: 50),
           ),
           SizedBox(height: MediaQuery.of(context).size.height - 400),

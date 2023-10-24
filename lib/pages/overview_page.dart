@@ -43,32 +43,65 @@ class _OverviewPageState extends State<OverviewPage> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
+    //return to setting page
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => SettingPage()))),
+                .push(MaterialPageRoute(builder: (context) => const SettingPage(),),),),
         elevation: 0,
-        backgroundColor: design_const.primaryColor,
+        backgroundColor: Color.fromARGB(255, 114, 187, 247),//design_const.primaryColor,
         title: Text(
           DateFormat.yMMMEd().format(DateTime.now()),
-          style: TextStyle(fontSize: 15),
+          style: const TextStyle(fontSize: 18,color:Colors.black,),
+          
         ),
         centerTitle: true,
       ),
       body: ListView(
         children: <Widget>[
           _userInfo(),
-          Row(
+          // Row(
+          //   children: <Widget>[
+          //     Container(
+          //         margin: const EdgeInsets.only(left: 30),
+          //         child: const Text('Training Goal of today: \t',
+          //             style: TextStyle(
+          //                 color: Colors.black,
+          //                 fontFamily: 'LibreBaskerville',
+          //                 fontSize: 15.0),),
+          //     ),
+          //     DropdownButton(
+          //         elevation: 0,
+          //         value: selectedAspect,
+          //         disabledHint: const Text('Not Available'),
+          //         icon: const Icon(Icons.keyboard_arrow_down),
+          //         items: business_constant.trainingAspects
+          //             .map((String item) => DropdownMenuItem(
+          //                 value: item,
+          //                 child: Text(
+          //                   item,
+          //                   style: const TextStyle(fontSize: 15, color: Colors.black),
+          //                 ),),)
+          //             .toList(),
+          //         onChanged: (String? newValue) {
+          //           setState(() => selectedAspect = newValue!);
+          //         },
+          //       ),
+          //     
+          //   ],
+          //   
+          // ),
+           Row(
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.only(left: 30),
-                  child: const Text('Training Goal of the day: \t',
+                  margin: const EdgeInsets.only(left: 30),
+                  child: const Text('Your Last Training Result: \t',
                       style: TextStyle(
                           color: Colors.black,
                           fontFamily: 'LibreBaskerville',
-                          fontSize: 15.0)),
+                          fontSize: 15.0),),
               ),
               DropdownButton(
                   elevation: 0,
@@ -80,23 +113,27 @@ class _OverviewPageState extends State<OverviewPage> {
                           value: item,
                           child: Text(
                             item,
-                            style: TextStyle(fontSize: 15, color: Colors.black),
-                          )))
+                            style: const TextStyle(fontSize: 15, color: Colors.black),
+                          ),),)
                       .toList(),
                   onChanged: (String? newValue) {
                     setState(() => selectedAspect = newValue!);
-                  }),
+                  },
+                ),
+              
             ],
+            
           ),
+
           Container(
-            margin: EdgeInsets.all(30),
+            margin: const EdgeInsets.all(30),
             height: 150.0,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(75.0)),
             ),
             child: InkWell(
-              child: _buildLastToAvgView(),
+             child: _buildLastToAvgView(),
               onTap: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => ImprovePage())),
             ),
@@ -115,16 +152,16 @@ class _OverviewPageState extends State<OverviewPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () => Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => SessionSelect())),
-        backgroundColor: Color(0xffe4d9bb),
+            .push(MaterialPageRoute(builder: (context) => const SessionSelect())),
+        backgroundColor: const Color(0xffe4d9bb),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
-  /// build the welcome message
+  // build the welcome message
   Widget _userInfo() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -132,7 +169,7 @@ class _OverviewPageState extends State<OverviewPage> {
         Expanded(child:
           Container(
             //margin: EdgeInsets.only(top: 25.0),
-            padding: EdgeInsets.only(left: 30.0),
+            padding: const EdgeInsets.only(left: 30.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -153,10 +190,10 @@ class _OverviewPageState extends State<OverviewPage> {
         Expanded(child:
           Container(
             alignment: Alignment.bottomRight,
-            margin: EdgeInsets.only(right: 50, top: 50),
+            margin: const EdgeInsets.only(right: 50, top: 50),
             child: InkWell(
               onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => UserPage())),
+                  .push(MaterialPageRoute(builder: (context) => const UserPage())),
               child  : Hero(
                 tag: 'profileAvatar',
                 child: ClipOval(
@@ -164,7 +201,7 @@ class _OverviewPageState extends State<OverviewPage> {
                         image: new AssetImage('assets/images/profile.png'),
                         fit: BoxFit.cover,
                         height: 100.0,
-                        width: 100.0)),
+                        width: 100.0),),
               ),
             ),
           ),
@@ -173,8 +210,8 @@ class _OverviewPageState extends State<OverviewPage> {
     );
   }
 
-  // List _trainingResult = [];
-  //
+  List _trainingResult = [];
+  
   // Future<void> readLocalFile() async {
   //   final String json = await rootBundle
   //       .loadString('../../assets/loggedData/LoggedData_ActivityLog.json');
@@ -184,12 +221,12 @@ class _OverviewPageState extends State<OverviewPage> {
   //   });
   // }
 
-  var _sampleDataShort = [SampleData('Average', 23), SampleData('Latest', 45)];
+ var _sampleDataShort = [SampleData('Average', 23), SampleData('Latest', 45)];
 
-  /// build chart compare only the Last training score with the Average training score
+  //  build chart compare only the Last training score with the Average training score
   Widget _buildLastToAvgView() {
     var seriesList = [
-      charts.Series<SampleData, String>(
+     charts.Series<SampleData, String>(
           id: 'Score',
           colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
           domainFn: (SampleData sample, _) => sample.timestamp,
@@ -197,11 +234,11 @@ class _OverviewPageState extends State<OverviewPage> {
           data: _sampleDataShort)
     ];
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Container(
         width: 800,
         height: 150,
-        child: charts.BarChart(seriesList, animate: true, vertical: false),
+       child: charts.BarChart(seriesList, animate: true, vertical: false),
       ),
     );
   }
@@ -225,7 +262,7 @@ class _OverviewPageState extends State<OverviewPage> {
           data: _sampleDataLong)
     ];
     return Padding(
-      padding: EdgeInsets.only(left: 25.0, right: 20.0),
+      padding: const EdgeInsets.only(left: 25.0, right: 20.0),
       child: Container(
         width: 800,
         height: 150,
@@ -236,6 +273,50 @@ class _OverviewPageState extends State<OverviewPage> {
       ),
     );
   }
+
+//    Widget _buildCurrentWeekView() {
+//     var seriesList = [
+//       charts.Series<SampleData, String>(
+//           id: 'Score',
+//           colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+//           domainFn: (SampleData sample, _) => sample.timestamp,
+//           measureFn: (SampleData sample, _) => sample.score,
+//           data: _sampleDataLong)
+//     ];
+//     return Padding(
+//       padding: const EdgeInsets.only(left: 25.0, right: 20.0),
+//       child: Container(
+//         width: 800,
+//         height: 150,
+//         child: charts.BarChart(
+//           seriesList,
+//           animate: true,
+//         ),
+//       ),
+//     );
+//   }
+// 
+//    Widget _buildCurrentWeekView() {
+//     var seriesList = [
+//       charts.Series<SampleData, String>(
+//           id: 'Score',
+//           colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+//           domainFn: (SampleData sample, _) => sample.timestamp,
+//           measureFn: (SampleData sample, _) => sample.score,
+//           data: _sampleDataLong)
+//     ];
+//     return Padding(
+//       padding: const EdgeInsets.only(left: 25.0, right: 20.0),
+//       child: Container(
+//         width: 800,
+//         height: 150,
+//         child: charts.BarChart(
+//           seriesList,
+//           animate: true,
+//         ),
+//       ),
+//     );
+//   }
 }
 
 class SampleData {

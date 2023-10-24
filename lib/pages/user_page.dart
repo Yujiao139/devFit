@@ -40,7 +40,12 @@ class _UserPageState extends State<UserPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
+                    Text(
+                      "Speed:",
+                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,),
+                    ),
                     CircularPercentIndicator(
+                      //Text:TextStyle("Speed:"),
                       animation: true,
                       radius: 40.0,
                       lineWidth: 9.0,

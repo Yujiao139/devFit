@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ox_tech/pub/business_constants.dart' as globals;
+import 'package:ox_tech/provider/sign_in_provider.dart';
+import 'package:ox_tech/screen/welcome/welcome.dart';
+import 'package:provider/provider.dart';
+
 
 /// user information overview
 class SettingPage extends StatefulWidget {
@@ -16,8 +20,9 @@ class _SettingPageState extends State<SettingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final sp = context.read<SignInProvider>();
     return Scaffold(
-      backgroundColor: Colors.white60,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -31,13 +36,13 @@ class _SettingPageState extends State<SettingPage> {
           Center(
               child: Container(
             alignment: Alignment.center,
-            child: Image(
+            child: const Image(
                 image: AssetImage('assets/images/logo.png'),
                 fit: BoxFit.cover,
                 height: 100.0,
                 width: 100.0),
           )),
-          Center(
+          const Center(
             child: Text(
               'OX Tech Inc.',
               style: TextStyle(
@@ -46,7 +51,7 @@ class _SettingPageState extends State<SettingPage> {
                   fontFamily: 'LibreBaskerville'),
             ),
           ),
-          Center(
+          const Center(
             child: Text(
               'version 1.0.0',
               style: TextStyle(
@@ -57,7 +62,7 @@ class _SettingPageState extends State<SettingPage> {
             ),
           ),
           Divider(),
-          ListTile(
+          const ListTile(
             title: Text("Switch Activity"),
             trailing: Icon(Icons.change_circle_outlined),
           ),
@@ -79,7 +84,7 @@ class _SettingPageState extends State<SettingPage> {
               },
             ),
           ),
-          ListTile(
+          const ListTile(
             title: Row(
               children: <Widget>[
                 Text("Device Health"),
@@ -91,20 +96,43 @@ class _SettingPageState extends State<SettingPage> {
             ),
             trailing: Text("95%"),
           ),
-          ListTile(
+          const ListTile(
             title: Text("Support Us"),
             trailing: Icon(Icons.coffee),
           ),
-          ListTile(
+          const ListTile(
               title: Text('About'),
               trailing: Icon(Icons.question_mark_rounded)),
-          ListTile(
-            title: Text(
-              "Logout",
-              style: TextStyle(color: Colors.redAccent),
-            ),
-            trailing: Icon(Icons.logout_outlined),
+          FloatingActionButton(
+              child: Icon(Icons.logout_rounded),
+              backgroundColor: Colors.lightBlue,
+              onPressed: (){
+                sp.userSignOut();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context){
+                      return Welcome();
+                    }));
+                },
           ),
+          // ListTile(
+          //   title: Text(
+          //     "Logout",
+          //     style: TextStyle(color: Colors.redAccent),
+          //
+          //   ),
+          //   trailing: Icon(Icons.logout_outlined),
+          // ),
+          // SizedBox(
+          //   height: 50,
+          //     child: TextButton(
+          //       child: const Text("Logout"),
+          //       onPressed: (){
+          //         SignInProvider().userSignOut;
+          //
+          //         },
+          //     ),
+          // ),
         ],
       ),
     );

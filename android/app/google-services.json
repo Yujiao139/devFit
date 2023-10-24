@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "311182396675",
+    "project_id": "x-ring-mvp-dev",
+    "storage_bucket": "x-ring-mvp-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311182396675:android:088950e445184b58f12d36",
+        "android_client_info": {
+          "package_name": "com.ox.ox_tech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311182396675-32rlrckv1d6b72jm2ius8sbrdukj4snf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ox.ox_tech",
+            "certificate_hash": "7eda134711a9ba3b03c9469edd33c40efb0f238f"
+          }
+        },
+        {
+          "client_id": "311182396675-0bojohi5vflr3n76f1nqr9tr81v3l09c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoZpMbzQkW1XliGYf4QOzh5vIHD2ufino"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311182396675-0bojohi5vflr3n76f1nqr9tr81v3l09c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "311182396675-aanefcu2o0s2strkmp7mh3ai75upd37e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ox.xRingMvpDev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

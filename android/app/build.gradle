@@ -22,8 +22,12 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
+// START: FlutterFire Configuration
+apply plugin: 'com.google.gms.google-services'
+// END: FlutterFire Configuration
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
 
 android {
     namespace "com.ox.ox_tech"
@@ -40,10 +44,11 @@ android {
         applicationId "com.ox.ox_tech"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 34//flutter.minSdkVersion
+        minSdkVersion 21//flutter.minSdkVersion
         targetSdkVersion 34//flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -63,4 +68,7 @@ dependencies {
     // ...
     implementation 'com.google.android.material:material:1.11.0-alpha02'
     // ...
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

@@ -7,7 +7,7 @@ String sampleUserName = 'SampleUser';
 
 /// supported activity type
 List<String> activities = ['Running', 'Badminton', 'Walking', 'Workout'];
-List<String> trainingAspects = ['Force', 'Speed']; // need refactor to a map
+List<String> trainingAspects = ['Force', 'Speed','Position']; // need refactor to a map
 List<String> weekdayEnum = [
   'Monday',
   'Tuesday',

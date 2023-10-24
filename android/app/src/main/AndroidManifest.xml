@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+          package="com.ox.ox_tech">
     <application
             android:label="ox_tech"
             android:name="${applicationName}"
